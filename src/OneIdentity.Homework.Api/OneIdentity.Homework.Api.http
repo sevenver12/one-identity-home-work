@@ -1,0 +1,27 @@
+@OneIdentity.Homework.Api_HostAddress = http://localhost:5200
+
+GET {{OneIdentity.Homework.Api_HostAddress}}/users
+Accept: application/json
+
+###
+
+GET {{OneIdentity.Homework.Api_HostAddress}}/users/1
+Accept: application/json
+
+###
+
+POST {{OneIdentity.Homework.Api_HostAddress}}/users/
+Accept: application/json
+
+###
+
+PUT {{OneIdentity.Homework.Api_HostAddress}}/users/1
+Accept: application/json
+
+###
+
+PUT {{OneIdentity.Homework.Api_HostAddress}}/users/1
+Accept: application/json
+
+###
+
