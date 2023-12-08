@@ -12,7 +12,7 @@ public static class ServiceProviderExtensions
     /// </summary>
     /// <returns></returns>
     /// <remarks>
-    /// This method is sadly neccesary as the preview mongodb serviceprovider (or simply the mongdriver) doesn't support EndpointResolution added with 
+    /// This method is sadly neccesary as the preview mongodb service provider (or simply the mongo driver) doesn't support EndpointResolution added with 
     /// <see cref="HostingExtensions.AddServiceDiscovery(IServiceCollection)"/>
     /// </remarks>
     public static string ResolveMongoDbConnectionString(this IServiceProvider sp, WebApplicationBuilder builder)

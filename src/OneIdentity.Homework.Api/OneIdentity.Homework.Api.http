@@ -13,14 +13,33 @@ Accept: application/json
 POST {{OneIdentity.Homework.Api_HostAddress}}/users/
 Accept: application/json
 
+{
+  "UserName" : "SomeName",
+  "Password" : "Password",
+  "Email" : "dumy@email.com",
+  "BirthDate" : "2023-05-10",
+  "PhoneNumber" : "+36 30 5555555",
+  "Nickname" : "nickname"
+}
+
 ###
 
 PUT {{OneIdentity.Homework.Api_HostAddress}}/users/1
 Accept: application/json
 
+{
+  "Id" : "6c894baa-38c5-49ea-afea-6c7c00d67358"
+  "UserName" : "SomeName",
+  "Password" : "Password",
+  "Email" : "dumy@email.com",
+  "BirthDate" : "2023-05-10",
+  "PhoneNumber" : "+36 30 5555555",
+  "Nickname" : "nickname"
+}
+
 ###
 
-PUT {{OneIdentity.Homework.Api_HostAddress}}/users/1
+DELETE {{OneIdentity.Homework.Api_HostAddress}}/users/1
 Accept: application/json
 
 ###
