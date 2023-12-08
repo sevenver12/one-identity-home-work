@@ -13,6 +13,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\OneIdentity.Homework.Api.ServiceDefaults\OneIdentity.Homework.ServiceDefaults.csproj" />
     <ProjectReference Include="..\OneIdentity.Homework.Api\OneIdentity.Homework.Api.csproj" />
   </ItemGroup>
 
