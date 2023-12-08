@@ -13,6 +13,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution items", "Solution 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OneIdentity.Homework.Api", "src\OneIdentity.Homework.Api\OneIdentity.Homework.Api.csproj", "{CBFFD060-02B6-46F1-9DF5-71C71DD93CB5}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OneIdentity.Homework.Database", "src\OneIdentity.Homework.Database\OneIdentity.Homework.Database.csproj", "{501C91D6-7D0C-4904-9625-7EFBC0432EED}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -31,6 +33,10 @@ Global
 		{CBFFD060-02B6-46F1-9DF5-71C71DD93CB5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CBFFD060-02B6-46F1-9DF5-71C71DD93CB5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CBFFD060-02B6-46F1-9DF5-71C71DD93CB5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{501C91D6-7D0C-4904-9625-7EFBC0432EED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{501C91D6-7D0C-4904-9625-7EFBC0432EED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{501C91D6-7D0C-4904-9625-7EFBC0432EED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{501C91D6-7D0C-4904-9625-7EFBC0432EED}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
