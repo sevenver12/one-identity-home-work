@@ -1,18 +1,25 @@
-using System.Text.Json.Serialization;
+using Microsoft.EntityFrameworkCore;
+using OneIdentity.Homework.Api.Extensions;
+using OneIdentity.Homework.Database;
 
 var builder = WebApplication.CreateSlimBuilder(args);
-
-builder.AddServiceDefaults();
-
-builder.Services.ConfigureHttpJsonOptions(options =>
-{
-    //options.SerializerOptions.TypeInfoResolverChain.Insert(0, AppJsonSerializerContext.Default);
-    
-});
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddControllers();
+
+builder.AddServiceDefaults();
+
+builder.Services.AddDbContext<EfContext>((sp, opt) =>
+{
+    opt.UseMongoDB(sp.ResolveMongoDbConnectionString(builder), "mongo");
+});
+
+builder.Services.ConfigureHttpJsonOptions(options =>
+{
+    //options.SerializerOptions.TypeInfoResolverChain.Insert(0, AppJsonSerializerContext.Default);
+
+});
 
 var app = builder.Build();
 
