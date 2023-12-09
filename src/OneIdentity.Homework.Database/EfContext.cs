@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using OneIdentity.Homework.Database.Models;
+using OneIdentity.Homework.Database.Entities;
 
 namespace OneIdentity.Homework.Database;
 
