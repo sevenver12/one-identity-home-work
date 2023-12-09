@@ -1,0 +1,5 @@
+﻿{
+  Items: [],
+  CurrentPage: 0,
+  PageSize: 0
+}

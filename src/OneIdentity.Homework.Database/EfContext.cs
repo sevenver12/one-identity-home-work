@@ -8,7 +8,7 @@ public class EfContext : DbContext
     public EfContext(){}
     public EfContext(DbContextOptions options) : base(options){}
 
-    public DbSet<User> Users { get; set; }
+    public virtual DbSet<User> Users { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
