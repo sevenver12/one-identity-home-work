@@ -1,19 +1,21 @@
-@OneIdentity.Homework.Api_HostAddress = http://localhost:5200
+@OneIdentity.Homework.Api_HostAddress = http://localhost:5200/api
 
 GET {{OneIdentity.Homework.Api_HostAddress}}/users
 Accept: application/json
 
 ###
 
-GET {{OneIdentity.Homework.Api_HostAddress}}/users/1
+GET {{OneIdentity.Homework.Api_HostAddress}}/users/152f5133-000d-4a75-b67a-aa359decae39?ps=10&pn=0
 Accept: application/json
 
 ###
 
 POST {{OneIdentity.Homework.Api_HostAddress}}/users/
-Accept: application/json
+Accept: text/plain
+Content-Type: application/json
 
 {
+  "Id": "152f5133-000d-4a75-b67a-aa359decae39",
   "UserName" : "SomeName",
   "Password" : "Password",
   "Email" : "dumy@email.com",
@@ -24,13 +26,11 @@ Accept: application/json
 
 ###
 
-PUT {{OneIdentity.Homework.Api_HostAddress}}/users/1
-Accept: application/json
+PUT {{OneIdentity.Homework.Api_HostAddress}}/users/152f5133-000d-4a75-b67a-aa359decae39
+Accept: text/plain
+Content-Type: application/json
 
 {
-  "Id" : "6c894baa-38c5-49ea-afea-6c7c00d67358"
-  "UserName" : "SomeName",
-  "Password" : "Password",
   "Email" : "dumy@email.com",
   "BirthDate" : "2023-05-10",
   "PhoneNumber" : "+36 30 5555555",
@@ -39,7 +39,7 @@ Accept: application/json
 
 ###
 
-DELETE {{OneIdentity.Homework.Api_HostAddress}}/users/1
+DELETE {{OneIdentity.Homework.Api_HostAddress}}/users/152f5133-000d-4a75-b67a-aa359decae39
 Accept: application/json
 
 ###
