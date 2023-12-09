@@ -21,6 +21,7 @@
 	<ItemGroup>
 		<ProjectReference Include="..\OneIdentity.Homework.Api.ServiceDefaults\OneIdentity.Homework.ServiceDefaults.csproj" />
 		<ProjectReference Include="..\OneIdentity.Homework.Database\OneIdentity.Homework.Database.csproj" />
+		<ProjectReference Include="..\OneIdentity.Homework.Repository\OneIdentity.Homework.Repository.csproj" />
 	</ItemGroup>
 
 </Project>

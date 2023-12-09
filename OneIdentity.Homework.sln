@@ -17,7 +17,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OneIdentity.Homework.Databa
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Aspire", "Aspire", "{852EF575-5C97-4FCA-B8FF-8387F97D920D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OneIdentity.Homework.Repository", "OneIdentity.Homework.Repository\OneIdentity.Homework.Repository.csproj", "{57D2CA35-E42C-4807-87E0-740179B709EA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OneIdentity.Homework.Repository", "src\OneIdentity.Homework.Repository\OneIdentity.Homework.Repository.csproj", "{15C2EDBA-6906-4458-947D-8A58DA71CA00}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -41,10 +41,10 @@ Global
 		{501C91D6-7D0C-4904-9625-7EFBC0432EED}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{501C91D6-7D0C-4904-9625-7EFBC0432EED}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{501C91D6-7D0C-4904-9625-7EFBC0432EED}.Release|Any CPU.Build.0 = Release|Any CPU
-		{57D2CA35-E42C-4807-87E0-740179B709EA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{57D2CA35-E42C-4807-87E0-740179B709EA}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{57D2CA35-E42C-4807-87E0-740179B709EA}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{57D2CA35-E42C-4807-87E0-740179B709EA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{15C2EDBA-6906-4458-947D-8A58DA71CA00}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{15C2EDBA-6906-4458-947D-8A58DA71CA00}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{15C2EDBA-6906-4458-947D-8A58DA71CA00}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{15C2EDBA-6906-4458-947D-8A58DA71CA00}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

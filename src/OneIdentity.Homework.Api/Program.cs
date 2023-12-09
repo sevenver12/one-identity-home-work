@@ -1,13 +1,14 @@
 using Microsoft.EntityFrameworkCore;
 using OneIdentity.Homework.Api.Extensions;
 using OneIdentity.Homework.Database;
+using OneIdentity.Homework.Repository.Extensions;
 
 var builder = WebApplication.CreateSlimBuilder(args);
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddControllers();
-
+builder.Services.AddRepository();
 builder.AddServiceDefaults();
 
 builder.Services.AddDbContext<EfContext>((sp, opt) =>
@@ -17,8 +18,7 @@ builder.Services.AddDbContext<EfContext>((sp, opt) =>
 
 builder.Services.ConfigureHttpJsonOptions(options =>
 {
-    //options.SerializerOptions.TypeInfoResolverChain.Insert(0, AppJsonSerializerContext.Default);
-
+    options.SerializerOptions.TypeInfoResolverChain.Insert(0, AppJsonSerializerContext.Default);
 });
 
 var app = builder.Build();
@@ -32,11 +32,3 @@ if (app.Environment.IsDevelopment())
 app.MapDefaultEndpoints();
 app.MapControllers();
 app.Run();
-
-//public record Todo(int Id, string? Title, DateOnly? DueBy = null, bool IsComplete = false);
-
-//[JsonSerializable(typeof(Todo[]))]
-//internal partial class AppJsonSerializerContext : JsonSerializerContext
-//{
-
-//}

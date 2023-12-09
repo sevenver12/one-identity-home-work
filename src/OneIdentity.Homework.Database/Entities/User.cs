@@ -1,6 +1,21 @@
-﻿namespace OneIdentity.Homework.Database.Entities;
+﻿using System.Diagnostics.CodeAnalysis;
+
+namespace OneIdentity.Homework.Database.Entities;
 public class User
 {
+    public User()
+    {
+        
+    }
+
+    [SetsRequiredMembers]
+    public User(Guid id)
+    {
+        Id = id;
+        UserName = string.Empty;
+        Password = string.Empty;
+        Email = string.Empty;
+    }
     /// <summary>
     /// Id of the user
     /// </summary>

@@ -2,13 +2,15 @@
 using Microsoft.Extensions.Logging;
 using MongoDB.Driver.Linq;
 using OneIdentity.Homework.Database;
+using OneIdentity.Homework.Repository.Abstraction;
 using OneIdentity.Homework.Repository.Extensions;
 using OneIdentity.Homework.Repository.Extensions.Mapper;
 using OneIdentity.Homework.Repository.Models;
 using OneIdentity.Homework.Repository.Models.User;
-namespace OneIdentity.Homework.Repository.Users;
+namespace OneIdentity.Homework.Repository;
 
-public class UserRepository
+/// <inheritdoc/>
+public class UserRepository : IUserRepository
 {
     private readonly ILogger<UserRepository> _logger;
     private readonly EfContext _efContext;
@@ -21,21 +23,33 @@ public class UserRepository
         _timeProvider = timeProvider;
     }
 
-    public async Task<PagedCollection<User>> GetAllUsers(int pageSize, int pageNumber, CancellationToken cancellationToken = default)
+    ///<inheritdoc/>
+    public async Task<PagedCollection<User>> GetPageOfUsersAsync(int pageSize, int pageNumber, CancellationToken cancellationToken = default)
     {
-        return await _efContext.Users.ProjectToToDto().ToPagedCollectionAsync(pageSize, pageNumber, cancellationToken);
+        var users = await _efContext.Users.ApplyPaging(pageSize, pageNumber).ToListAsync(cancellationToken);
+        return users.ToDto().ToPagedCollection(pageNumber);
     }
 
-    public async Task<User?> GetUserById(Guid id, CancellationToken cancellationToken = default)
+    ///<inheritdoc/>
+    public async Task<User?> GetUserByIdAsync(Guid id, CancellationToken cancellationToken = default)
     {
-        return await _efContext.Users.ProjectToToDto().FirstOrDefaultAsync(user => user.Id == id, cancellationToken);
+        var user = await _efContext.Users.FirstOrDefaultAsync(user => user.Id == id, cancellationToken);
+        if (user is null)
+        {
+            return null;
+        }
+        return user.ToDto();
     }
 
-    public async Task<bool> DeleteUser(Guid id, CancellationToken cancellationToken = default)
+    ///<inheritdoc/>
+    public async Task<bool> DeleteUserAsync(Guid id, CancellationToken cancellationToken = default)
     {
-        return (await _efContext.Users.Where(user => user.Id == id).ExecuteDeleteAsync(cancellationToken)) == 1;
+        var user = new Database.Entities.User(id);
+        _efContext.Entry(user).State = EntityState.Deleted;
+        return await _efContext.SaveChangesAsync() == 1;
     }
 
+    ///<inheritdoc/>
     public async Task<User> CreateUser(CreateUser user, CancellationToken cancellationToken = default)
     {
         var userTracker = _efContext.Users.Add(user.ToEntity(_timeProvider));
@@ -43,11 +57,12 @@ public class UserRepository
         return userTracker.Entity.ToDto();
     }
 
-    public async Task<User?> UpdateUser(Guid id, UpdateUser user, CancellationToken cancellationToken = default)
+    ///<inheritdoc/>
+    public async Task<User?> UpdateUserAsync(Guid id, UpdateUser user, CancellationToken cancellationToken = default)
     {
         var userEntity = await _efContext.Users.FirstOrDefaultAsync(user => user.Id == id);
 
-        if (userEntity == null)
+        if (userEntity is null)
         {
             _logger.LogWarning("User {UserId} wasn't found while attempting update", id);
             return null;
