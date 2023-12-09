@@ -1,4 +1,4 @@
-﻿namespace OneIdentity.Homework.Database.Models;
+﻿namespace OneIdentity.Homework.Repository.Models.User;
 public class User
 {
     /// <summary>
@@ -44,6 +44,5 @@ public class User
     /// <summary>
     /// When the user was Updated
     /// </summary>
-    public DateTimeOffset UpdatedDate { get; set; }
-
+    public DateTimeOffset? UpdatedDate { get; set; }
 }
