@@ -9,7 +9,7 @@ public class User
     }
 
     [SetsRequiredMembers]
-    public User(int id)
+    public User(Guid id)
     {
         Id = id;
         UserName = string.Empty;
@@ -21,7 +21,7 @@ public class User
     /// <summary>
     /// Id of the user
     /// </summary>
-    public int Id { get; set; }
+    public Guid Id { get; set; } = Guid.NewGuid();
 
     /// <summary>
     /// Name of the user

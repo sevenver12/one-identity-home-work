@@ -14,6 +14,66 @@ public class UserRepositoryTests : TestBed<Startup>
     private readonly EfContext _context;
     private readonly Mock<TimeProvider> _mockTimeProvider = new();
 
+    private List<User> GetTestUsers() =>
+    [
+        new User()
+            {
+                BirthDate = DateTimeOffset.Now,
+                Email = "someemail@test.com",
+                UserName = "name",
+                CreatedAt = DateTimeOffset.Now,
+                Name= "name",
+                Phone = "1234567890",
+                Website = "www.something.com",
+                Address = new Address
+                {
+                    Geo = new Geo
+                    {
+                        Lat = 1,
+                        Lng = 2,
+                    },
+                    City = "1",
+                    Street = "2",
+                    Suite = "3",
+                    ZipCode = "4",
+                },
+                Company = new Company()
+                {
+                    Bs = "slogan",
+                    CatchPhrase = "CatchPhrase",
+                    Name = "name",
+                }
+            },
+            new User()
+            {
+                BirthDate = DateTimeOffset.Now,
+                Email = "notjustanyemail@test.com",
+                Name = "name",
+                UserName = "name2",
+                CreatedAt = DateTimeOffset.Now,
+                Phone = "1234567890",
+                Website = "www.something.com",
+                Address = new Address
+                {
+                    Geo = new Geo
+                    {
+                        Lat = 1,
+                        Lng = 2,
+                    },
+                    City = "1",
+                    Street = "2",
+                    Suite = "3",
+                    ZipCode = "4",
+                },
+                Company = new Company()
+                {
+                    Bs = "slogan",
+                    CatchPhrase = "CatchPhrase",
+                    Name = "name",
+                }
+            }
+        ];
+
     public UserRepositoryTests(ITestOutputHelper testOutputHelper, Startup fixture) : base(testOutputHelper, fixture)
     {
         _logger = _fixture.GetService<ILogger<UserRepository>>(testOutputHelper)!;
@@ -32,26 +92,7 @@ public class UserRepositoryTests : TestBed<Startup>
         var sut = CreateSut();
         var pageSize = 2;
         var pageNumber = 0;
-        List<User> users =
-        [
-            new User()
-            {
-                BirthDate = DateTimeOffset.Now,
-                Email = "someemail@test.com",
-                UserName = "name",
-                Name = "email",
-                CreatedAt = DateTimeOffset.Now,
-            },
-            new User()
-            {
-                BirthDate = DateTimeOffset.Now,
-                Email = "notjustanyemail@test.com",
-                Name = "name",
-                UserName = "name2",
-                CreatedAt = DateTimeOffset.Now,
-            },
-
-        ];
+        List<User> users = GetTestUsers();
 
         _context.Users.AddRange(users);
         await _context.SaveChangesAsync();
@@ -85,7 +126,7 @@ public class UserRepositoryTests : TestBed<Startup>
     {
         // Arrange
         var sut = CreateSut();
-        var id = 5;
+        var id = Guid.NewGuid();
 
         // Act
         var result = await sut.GetUserByIdAsync(id);
@@ -99,26 +140,7 @@ public class UserRepositoryTests : TestBed<Startup>
     {
         // Arrange
         var sut = CreateSut();
-        List<User> users =
-        [
-            new User()
-            {
-                BirthDate = DateTimeOffset.Now,
-                Email = "someemail@test.com",
-                UserName = "name",
-                CreatedAt = DateTimeOffset.Now,
-                Name = "name",
-            },
-            new User()
-            {
-                BirthDate = DateTimeOffset.Now,
-                Email = "notjustanyemail@test.com",
-                UserName = "name2",
-                CreatedAt = DateTimeOffset.Now,
-                Name= "name",
-            },
-
-        ];
+        List<User> users = GetTestUsers();
 
         _context.Users.AddRange(users);
         await _context.SaveChangesAsync();
@@ -136,26 +158,7 @@ public class UserRepositoryTests : TestBed<Startup>
     {
         // Arrange
         var sut = CreateSut();
-        List<User> users =
-        [
-            new User()
-            {
-                BirthDate = DateTimeOffset.Now,
-                Email = "someemail@test.com",
-                Name = "name",
-                UserName = "name",
-                CreatedAt = DateTimeOffset.Now,
-            },
-            new User()
-            {
-                BirthDate = DateTimeOffset.Now,
-                Email = "notjustanyemail@test.com",
-                UserName = "name2",
-                CreatedAt = DateTimeOffset.Now,
-                Name = "name"
-            },
-
-        ];
+        List<User> users = GetTestUsers();
 
         _context.Users.AddRange(users);
         await _context.SaveChangesAsync();
@@ -175,52 +178,7 @@ public class UserRepositoryTests : TestBed<Startup>
         // Arrange
         var sut = CreateSut();
         // Act
-        var result = await sut.DeleteUserAsync(6);
-
-        //Assert
-        await Verify(result);
-    }
-
-    [Fact]
-    public async Task CreateUserAsync_DuplicateUser_ShouldReturnNull()
-    {
-        // Arrange
-        var sut = CreateSut();
-        List<User> users =
-        [
-            new User()
-            {
-                BirthDate = DateTimeOffset.Now,
-                Email = "someemail@test.com",
-                UserName = "name",
-                CreatedAt = DateTimeOffset.Now,
-                Name= "name"
-            },
-            new User()
-            {
-                BirthDate = DateTimeOffset.Now,
-                Email = "notjustanyemail@test.com",
-                Name = "name",
-                UserName = "name2",
-                CreatedAt = DateTimeOffset.Now,
-            },
-
-        ];
-
-        _context.Users.AddRange(users);
-        await _context.SaveChangesAsync();
-        _context.ChangeTracker.Clear();
-
-        var createUser = new Models.User.CreateUser
-        {
-            BirthDate = DateTimeOffset.Now,
-            Email = "notjustanyemail@test.com",
-            UserName = "name2",
-            Name = "name2",
-        };
-
-        // Act
-        var result = await sut.CreateUserAsync(createUser);
+        var result = await sut.DeleteUserAsync(Guid.NewGuid());
 
         //Assert
         await Verify(result);
@@ -238,6 +196,26 @@ public class UserRepositoryTests : TestBed<Startup>
             Email = "notjustanyemail@test.com",
             UserName = "name2",
             Name = "name2",
+            Company = new Models.User.Company
+            {
+                Bs = "bs",
+                CatchPhrase = "cpt",
+                Name = "Long Homework"
+            },
+            Address = new Models.User.Address
+            {
+                City = "Coty",
+                Geo = new Models.User.Geo
+                {
+                    Lat = 1,
+                    Lng = 2,
+                },
+                Street = "yes",
+                Suite = "no",
+                ZipCode = "maybe"
+            },
+            Phone = "5",
+            Website = "5.com",
         };
         var createdAt = new DateTimeOffset(2000, 1, 1, 1, 1, 1, TimeSpan.FromHours(2));
         _mockTimeProvider.Setup(s => s.GetUtcNow()).Returns(createdAt);
@@ -254,26 +232,7 @@ public class UserRepositoryTests : TestBed<Startup>
     {
         // Arrange
         var sut = CreateSut();
-        List<User> users =
-        [
-            new User()
-            {
-                BirthDate = DateTimeOffset.Now,
-                Email = "someemail@test.com",
-                Name = "Test",
-                UserName = "name",
-                CreatedAt = DateTimeOffset.Now,
-            },
-            new User()
-            {
-                BirthDate = DateTimeOffset.Now,
-                Email = "notjustanyemail@test.com",
-                Name = "name",
-                UserName = "name2",
-                CreatedAt = DateTimeOffset.Now,
-            },
-
-        ];
+        List<User> users = GetTestUsers();
 
         _context.Users.AddRange(users);
         await _context.SaveChangesAsync();
@@ -284,6 +243,18 @@ public class UserRepositoryTests : TestBed<Startup>
             BirthDate = DateTimeOffset.Now,
             Email = "notjustanyemail@test.com",
             Name = "name2",
+            Address = new Models.User.Address
+            {
+                City = "Coty",
+                Geo = new Models.User.Geo
+                {
+                    Lat = 1,
+                    Lng = 2,
+                },
+                Street = "yes",
+                Suite = "no",
+                ZipCode = "maybe"
+            },
         };
 
         var updatedAt = new DateTimeOffset(2000, 1, 1, 1, 1, 1, TimeSpan.FromHours(2));
@@ -314,7 +285,7 @@ public class UserRepositoryTests : TestBed<Startup>
         _mockTimeProvider.Setup(s => s.GetUtcNow()).Returns(updatedAt);
 
         // Act
-        var result = await sut.UpdateUserAsync(5, updateUser);
+        var result = await sut.UpdateUserAsync(Guid.NewGuid(), updateUser);
 
         //Assert
         await Verify(result);

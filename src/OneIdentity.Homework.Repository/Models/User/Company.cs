@@ -1,4 +1,4 @@
-﻿namespace OneIdentity.Homework.Database.Entities;
+﻿namespace OneIdentity.Homework.Repository.Models.User;
 public class Company
 {
     /// <summary>

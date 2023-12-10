@@ -1,11 +1,26 @@
 ﻿{
   Id: Guid_1,
+  Name: name2,
   UserName: name2,
-  Password: password,
   Email: notjustanyemail@test.com,
   BirthDate: DateTimeOffset_1,
-  PhoneNumber: null,
-  Nickname: name2,
+  Website: 5.com,
+  Phone: 5,
   CreatedAt: CreatedAt,
-  UpdatedAt: null
+  UpdatedAt: null,
+  Company: {
+    Name: Long Homework,
+    CatchPhrase: cpt,
+    Bs: bs
+  },
+  Address: {
+    Street: yes,
+    Suite: no,
+    City: Coty,
+    ZipCode: maybe,
+    Geo: {
+      Lat: 1.0,
+      Lng: 2.0
+    }
+  }
 }

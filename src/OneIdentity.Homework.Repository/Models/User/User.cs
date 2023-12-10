@@ -1,12 +1,10 @@
-﻿using OneIdentity.Homework.Database.Entities;
-
-namespace OneIdentity.Homework.Repository.Models.User;
+﻿namespace OneIdentity.Homework.Repository.Models.User;
 public class User
 {
     /// <summary>
     /// Id of the user
     /// </summary>
-    public int Id { get; set; }
+    public Guid Id { get; set; }
 
     /// <summary>
     /// Name of the user

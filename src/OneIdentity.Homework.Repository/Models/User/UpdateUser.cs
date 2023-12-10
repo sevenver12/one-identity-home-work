@@ -1,9 +1,6 @@
-﻿using OneIdentity.Homework.Database.Entities;
-
-namespace OneIdentity.Homework.Repository.Models.User;
+﻿namespace OneIdentity.Homework.Repository.Models.User;
 public class UpdateUser
 {
-
     /// <summary>
     /// Email of the user
     /// </summary>

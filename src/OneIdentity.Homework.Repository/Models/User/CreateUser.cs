@@ -30,4 +30,14 @@ public class CreateUser
     /// Website of the user
     /// </summary>
     public string? Website { get; set; }
+
+    /// <summary>
+    /// Company of the user
+    /// </summary>
+    public Company? Company { get; set; }
+
+    /// <summary>
+    /// Address of the user
+    /// </summary>
+    public Address? Address { get; set; }
 }
