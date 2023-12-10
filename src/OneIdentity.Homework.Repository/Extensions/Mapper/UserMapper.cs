@@ -26,11 +26,11 @@ public static partial class UserMapper
     /// </summary>
     /// <param name="updateUser">Source User</param>
     /// <param name="user">Target User</param>
-    /// <param name="timeProvider">Time provider to be used at the <see cref="Database.Entities.User.UpdatedDate"/></param>
+    /// <param name="timeProvider">Time provider to be used at the <see cref="Database.Entities.User.UpdatedAt"/></param>
     public static void UpdateUserToUserEntity(this Models.User.UpdateUser updateUser, Database.Entities.User user, TimeProvider timeProvider)
     {
         updateUser.UpdateUserToUserEntity(user);
-        user.UpdatedDate = timeProvider.GetUtcNow();
+        user.UpdatedAt = timeProvider.GetUtcNow();
     }
 
     /// <summary>

@@ -1,0 +1,37 @@
+﻿{
+  usersInDb: [
+    {
+      Id: Guid_1,
+      UserName: name,
+      Password: password,
+      Email: notjustanyemail@test.com,
+      BirthDate: DateTimeOffset_1,
+      PhoneNumber: null,
+      Nickname: name2,
+      CreatedAt: DateTimeOffset_2,
+      UpdatedAt: UpdatedAt
+    },
+    {
+      Id: Guid_2,
+      UserName: name2,
+      Password: password,
+      Email: notjustanyemail@test.com,
+      BirthDate: DateTimeOffset_3,
+      PhoneNumber: null,
+      Nickname: name2,
+      CreatedAt: DateTimeOffset_4,
+      UpdatedAt: null
+    }
+  ],
+  updateResult: {
+    Id: Guid_1,
+    UserName: name,
+    Password: password,
+    Email: notjustanyemail@test.com,
+    BirthDate: DateTimeOffset_1,
+    PhoneNumber: null,
+    Nickname: name2,
+    CreatedAt: DateTimeOffset_2,
+    UpdatedAt: UpdatedAt
+  }
+}

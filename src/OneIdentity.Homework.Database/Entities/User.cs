@@ -59,6 +59,6 @@ public class User
     /// <summary>
     /// When the user was Updated
     /// </summary>
-    public DateTimeOffset? UpdatedDate { get; set; }
+    public DateTimeOffset? UpdatedAt { get; set; }
 
 }

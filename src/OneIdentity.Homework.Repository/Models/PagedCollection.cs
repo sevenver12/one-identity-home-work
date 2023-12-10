@@ -14,6 +14,6 @@ public class PagedCollection<T> where T : class
     /// <summary>
     /// Size of the page
     /// </summary>
-    public int PageSize { get => Items.Count(); }
+    public int PageSize => Items.Count();
 
 }
