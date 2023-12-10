@@ -3,6 +3,11 @@
 
 name: "Build, test, sonar"
 
+permissions:
+  id-token: write
+  contents: read
+  checks: write
+
 on:
   push:
     branches: [ "main" ]
@@ -26,16 +31,18 @@ jobs:
     - name: Build
       run: dotnet build --no-restore
     - name: Test
-      run: dotnet test --collect:"XPlat Code Coverage" --no-build --verbosity normal
-    - name: Upload Test Results
-      if: failure()
-      uses: actions/upload-artifact@v2
-      with:
-        name: verify-test-results
-        path: |
-          **/*.received.*
+      run: dotnet test --collect:"XPlat Code Coverage;Format=opencover" --no-build --verbosity normal --logger "trx;LogFileName=test-results.trx" || true
     - name: SonarCloud Scan
       uses: SonarSource/sonarcloud-github-action@master
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+
+    - name: Report
+      uses: dorny/test-reporter@v1
+      if: always()
+      with:
+        name: DotNET Tests
+        path: "**/test-results.trx"                            
+        reporter: dotnet-trx
+        fail-on-error: true
