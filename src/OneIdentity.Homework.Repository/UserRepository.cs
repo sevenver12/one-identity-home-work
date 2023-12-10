@@ -63,18 +63,9 @@ public class UserRepository : IUserRepository
     ///<inheritdoc/>
     public async Task<User?> CreateUserAsync(CreateUser user, CancellationToken cancellationToken = default)
     {
-        try
-        {
-            var userTracker = _efContext.Users.Add(user.ToEntity(_timeProvider));
-            await _efContext.SaveChangesAsync(cancellationToken);
-            return userTracker.Entity.ToDto();
-        }
-        catch (UniqueConstraintViolationException e)
-        {
-            _logger.LogInformation(e, "User {UserId} couldn't be created because an user exists with the same Id already", user.Id);
-            return null;
-        }
-        throw new UnreachableException();
+        var userTracker = _efContext.Users.Add(user.ToEntity(_timeProvider));
+        await _efContext.SaveChangesAsync(cancellationToken);
+        return userTracker.Entity.ToDto();
     }
 
     ///<inheritdoc/>

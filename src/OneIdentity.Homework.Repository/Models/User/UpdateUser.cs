@@ -1,7 +1,6 @@
 ﻿namespace OneIdentity.Homework.Repository.Models.User;
 public class UpdateUser
 {
-
     /// <summary>
     /// Email of the user
     /// </summary>
@@ -15,10 +14,25 @@ public class UpdateUser
     /// <summary>
     /// Phone number of the user
     /// </summary>
-    public string? PhoneNumber { get; set; }
+    public string? Phone { get; set; }
 
     /// <summary>
-    /// An optional Nickname
+    /// An optional Name
     /// </summary>
-    public string? Nickname { get; set; }
+    public string? Name { get; set; }
+
+    /// <summary>
+    /// Website of the user
+    /// </summary>
+    public string? Website { get; set; }
+
+    /// <summary>
+    /// Company of the user
+    /// </summary>
+    public required Company Company { get; set; }
+
+    /// <summary>
+    /// Address of the user
+    /// </summary>
+    public required Address Address { get; set; }
 }

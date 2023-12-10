@@ -2,36 +2,73 @@
   usersInDb: [
     {
       Id: Guid_1,
+      Name: name2,
       UserName: name,
-      Password: password,
       Email: notjustanyemail@test.com,
       BirthDate: DateTimeOffset_1,
-      PhoneNumber: null,
-      Nickname: name2,
+      Website: null,
+      Phone: null,
       CreatedAt: DateTimeOffset_2,
-      UpdatedAt: UpdatedAt
+      UpdatedAt: UpdatedAt,
+      Company: null,
+      Address: {
+        Street: yes,
+        Suite: no,
+        City: Coty,
+        ZipCode: maybe,
+        Geo: {
+          Lat: 1.0,
+          Lng: 2.0
+        }
+      }
     },
     {
       Id: Guid_2,
+      Name: name,
       UserName: name2,
-      Password: password,
       Email: notjustanyemail@test.com,
       BirthDate: DateTimeOffset_3,
-      PhoneNumber: null,
-      Nickname: name2,
+      Website: www.something.com,
+      Phone: 1234567890,
       CreatedAt: DateTimeOffset_4,
-      UpdatedAt: null
+      UpdatedAt: null,
+      Company: {
+        Name: name,
+        CatchPhrase: CatchPhrase,
+        Bs: slogan
+      },
+      Address: {
+        Street: 2,
+        Suite: 3,
+        City: 1,
+        ZipCode: 4,
+        Geo: {
+          Lat: 1.0,
+          Lng: 2.0
+        }
+      }
     }
   ],
   updateResult: {
     Id: Guid_1,
+    Name: name2,
     UserName: name,
-    Password: password,
     Email: notjustanyemail@test.com,
     BirthDate: DateTimeOffset_1,
-    PhoneNumber: null,
-    Nickname: name2,
+    Website: null,
+    Phone: null,
     CreatedAt: DateTimeOffset_2,
-    UpdatedAt: UpdatedAt
+    UpdatedAt: UpdatedAt,
+    Company: null,
+    Address: {
+      Street: yes,
+      Suite: no,
+      City: Coty,
+      ZipCode: maybe,
+      Geo: {
+        Lat: 1.0,
+        Lng: 2.0
+      }
+    }
   }
 }
