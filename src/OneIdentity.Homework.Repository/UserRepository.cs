@@ -32,7 +32,7 @@ public class UserRepository : IUserRepository
     }
 
     ///<inheritdoc/>
-    public async Task<User?> GetUserByIdAsync(Guid id, CancellationToken cancellationToken = default)
+    public async Task<User?> GetUserByIdAsync(int id, CancellationToken cancellationToken = default)
     {
         var user = await _efContext.Users.FirstOrDefaultAsync(user => user.Id == id, cancellationToken);
         if (user is null)
@@ -43,7 +43,7 @@ public class UserRepository : IUserRepository
     }
 
     ///<inheritdoc/>
-    public async Task<bool> DeleteUserAsync(Guid id, CancellationToken cancellationToken = default)
+    public async Task<bool> DeleteUserAsync(int id, CancellationToken cancellationToken = default)
     {
         var user = await _efContext.Users.FirstOrDefaultAsync(usr => usr.Id == id);
 
@@ -63,22 +63,13 @@ public class UserRepository : IUserRepository
     ///<inheritdoc/>
     public async Task<User?> CreateUserAsync(CreateUser user, CancellationToken cancellationToken = default)
     {
-        try
-        {
-            var userTracker = _efContext.Users.Add(user.ToEntity(_timeProvider));
-            await _efContext.SaveChangesAsync(cancellationToken);
-            return userTracker.Entity.ToDto();
-        }
-        catch (UniqueConstraintViolationException e)
-        {
-            _logger.LogInformation(e, "User {UserId} couldn't be created because an user exists with the same Id already", user.Id);
-            return null;
-        }
-        throw new UnreachableException();
+        var userTracker = _efContext.Users.Add(user.ToEntity(_timeProvider));
+        await _efContext.SaveChangesAsync(cancellationToken);
+        return userTracker.Entity.ToDto();
     }
 
     ///<inheritdoc/>
-    public async Task<User?> UpdateUserAsync(Guid id, UpdateUser user, CancellationToken cancellationToken = default)
+    public async Task<User?> UpdateUserAsync(int id, UpdateUser user, CancellationToken cancellationToken = default)
     {
         var userEntity = await _efContext.Users.FirstOrDefaultAsync(user => user.Id == id);
 

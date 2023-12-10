@@ -1,21 +1,10 @@
 ﻿namespace OneIdentity.Homework.Repository.Models.User;
 public class CreateUser
 {
-
-    /// <summary>
-    /// Id of the user
-    /// </summary>
-    public Guid Id { get; set; } = Guid.NewGuid();
-
     /// <summary>
     /// User name of the user
     /// </summary>
     public required string UserName { get; set; }
-
-    /// <summary>
-    /// Password of the user
-    /// </summary>
-    public required string Password { get; set; }
 
     /// <summary>
     /// Email of the user
@@ -30,10 +19,15 @@ public class CreateUser
     /// <summary>
     /// Phone number of the user
     /// </summary>
-    public string? PhoneNumber { get; set; }
+    public string? Phone { get; set; }
 
     /// <summary>
-    /// An optional Nickname
+    /// An optional Name
     /// </summary>
-    public string? Nickname { get; set; }
+    public string? Name { get; set; }
+
+    /// <summary>
+    /// Website of the user
+    /// </summary>
+    public string? Website { get; set; }
 }

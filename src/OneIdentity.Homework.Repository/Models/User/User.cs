@@ -1,20 +1,22 @@
-﻿namespace OneIdentity.Homework.Repository.Models.User;
+﻿using OneIdentity.Homework.Database.Entities;
+
+namespace OneIdentity.Homework.Repository.Models.User;
 public class User
 {
     /// <summary>
     /// Id of the user
     /// </summary>
-    public required Guid Id { get; set; }
+    public int Id { get; set; }
+
+    /// <summary>
+    /// Name of the user
+    /// </summary>
+    public required string Name { get; set; }
 
     /// <summary>
     /// User name of the user
     /// </summary>
     public required string UserName { get; set; }
-
-    /// <summary>
-    /// Password of the user
-    /// </summary>
-    public required string Password { get; set; }
 
     /// <summary>
     /// Email of the user
@@ -27,14 +29,14 @@ public class User
     public required DateTimeOffset BirthDate { get; set; }
 
     /// <summary>
-    /// Phone number of the user
+    /// Website of the user
     /// </summary>
-    public string? PhoneNumber { get; set; }
+    public string? Website { get; set; }
 
     /// <summary>
-    /// An optional Nickname
+    /// Phone number of the user
     /// </summary>
-    public string? Nickname { get; set; }
+    public string? Phone { get; set; }
 
     /// <summary>
     /// When the user was created
@@ -45,4 +47,14 @@ public class User
     /// When the user was Updated
     /// </summary>
     public DateTimeOffset? UpdatedAt { get; set; }
+
+    /// <summary>
+    /// Company of the user
+    /// </summary>
+    public Company? Company { get; set; }
+
+    /// <summary>
+    /// Address of the user
+    /// </summary>
+    public Address? Address { get; set; }
 }

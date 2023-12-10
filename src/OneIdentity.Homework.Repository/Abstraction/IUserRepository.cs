@@ -23,7 +23,7 @@ public interface IUserRepository
     /// <param name="id">Given id of the user</param>
     /// <param name="cancellationToken">CancellationToken</param>
     /// <returns>Result of the delete operation</returns>
-    Task<bool> DeleteUserAsync(Guid id, CancellationToken cancellationToken = default);
+    Task<bool> DeleteUserAsync(int id, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Queries a page of users
@@ -40,7 +40,7 @@ public interface IUserRepository
     /// <param name="id">The provided id</param>
     /// <param name="cancellationToken">CancellationToken</param>
     /// <returns>The requested user</returns>
-    Task<User?> GetUserByIdAsync(Guid id, CancellationToken cancellationToken = default);
+    Task<User?> GetUserByIdAsync(int id, CancellationToken cancellationToken = default);
     
     /// <summary>
     /// Updates an user by the given id and update object
@@ -50,5 +50,5 @@ public interface IUserRepository
     /// <param name="cancellationToken">CancellationToken</param>
     /// <returns>The updated user</returns>
     /// <remarks>Returns null when user was not found</remarks>
-    Task<User?> UpdateUserAsync(Guid id, UpdateUser user, CancellationToken cancellationToken = default);
+    Task<User?> UpdateUserAsync(int id, UpdateUser user, CancellationToken cancellationToken = default);
 }

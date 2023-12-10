@@ -26,7 +26,7 @@ public class UsersController : ControllerBase
 
     // GET api/<Users>/5
     [HttpGet("{id}")]
-    public async Task<ActionResult<User>> GetById(Guid id)
+    public async Task<ActionResult<User>> GetById(int id)
     {
         var user = await _userRepository.GetUserByIdAsync(id, HttpContext.RequestAborted);
         if (user is null)
@@ -52,7 +52,7 @@ public class UsersController : ControllerBase
 
     // PUT api/<Users>/5
     [HttpPut("{id}")]
-    public async Task<ActionResult<User>> Put(Guid id, [FromBody] UpdateUser updateUser)
+    public async Task<ActionResult<User>> Put(int id, [FromBody] UpdateUser updateUser)
     {
         var updatedUser = await _userRepository.UpdateUserAsync(id, updateUser, HttpContext.RequestAborted);
         if (updatedUser is null)
@@ -65,7 +65,7 @@ public class UsersController : ControllerBase
 
     // DELETE api/<Users>/5
     [HttpDelete("{id}")]
-    public async Task<ActionResult<User>> Delete(Guid id)
+    public async Task<ActionResult<User>> Delete(int id)
     {
         var result = await _userRepository.DeleteUserAsync(id);
         if (!result)

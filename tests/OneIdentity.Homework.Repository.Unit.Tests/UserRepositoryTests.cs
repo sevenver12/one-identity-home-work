@@ -38,19 +38,17 @@ public class UserRepositoryTests : TestBed<Startup>
             {
                 BirthDate = DateTimeOffset.Now,
                 Email = "someemail@test.com",
-                Password = "password",
                 UserName = "name",
+                Name = "email",
                 CreatedAt = DateTimeOffset.Now,
-                Nickname = "name",
             },
             new User()
             {
                 BirthDate = DateTimeOffset.Now,
                 Email = "notjustanyemail@test.com",
-                Password = "password",
+                Name = "name",
                 UserName = "name2",
                 CreatedAt = DateTimeOffset.Now,
-                Nickname = "name2",
             },
 
         ];
@@ -87,7 +85,7 @@ public class UserRepositoryTests : TestBed<Startup>
     {
         // Arrange
         var sut = CreateSut();
-        var id = Guid.NewGuid();
+        var id = 5;
 
         // Act
         var result = await sut.GetUserByIdAsync(id);
@@ -107,19 +105,17 @@ public class UserRepositoryTests : TestBed<Startup>
             {
                 BirthDate = DateTimeOffset.Now,
                 Email = "someemail@test.com",
-                Password = "password",
                 UserName = "name",
                 CreatedAt = DateTimeOffset.Now,
-                Nickname = "name",
+                Name = "name",
             },
             new User()
             {
                 BirthDate = DateTimeOffset.Now,
                 Email = "notjustanyemail@test.com",
-                Password = "password",
                 UserName = "name2",
                 CreatedAt = DateTimeOffset.Now,
-                Nickname = "name2",
+                Name= "name",
             },
 
         ];
@@ -146,19 +142,17 @@ public class UserRepositoryTests : TestBed<Startup>
             {
                 BirthDate = DateTimeOffset.Now,
                 Email = "someemail@test.com",
-                Password = "password",
+                Name = "name",
                 UserName = "name",
                 CreatedAt = DateTimeOffset.Now,
-                Nickname = "name",
             },
             new User()
             {
                 BirthDate = DateTimeOffset.Now,
                 Email = "notjustanyemail@test.com",
-                Password = "password",
                 UserName = "name2",
                 CreatedAt = DateTimeOffset.Now,
-                Nickname = "name2",
+                Name = "name"
             },
 
         ];
@@ -181,7 +175,7 @@ public class UserRepositoryTests : TestBed<Startup>
         // Arrange
         var sut = CreateSut();
         // Act
-        var result = await sut.DeleteUserAsync(Guid.NewGuid());
+        var result = await sut.DeleteUserAsync(6);
 
         //Assert
         await Verify(result);
@@ -198,19 +192,17 @@ public class UserRepositoryTests : TestBed<Startup>
             {
                 BirthDate = DateTimeOffset.Now,
                 Email = "someemail@test.com",
-                Password = "password",
                 UserName = "name",
                 CreatedAt = DateTimeOffset.Now,
-                Nickname = "name",
+                Name= "name"
             },
             new User()
             {
                 BirthDate = DateTimeOffset.Now,
                 Email = "notjustanyemail@test.com",
-                Password = "password",
+                Name = "name",
                 UserName = "name2",
                 CreatedAt = DateTimeOffset.Now,
-                Nickname = "name2",
             },
 
         ];
@@ -221,12 +213,10 @@ public class UserRepositoryTests : TestBed<Startup>
 
         var createUser = new Models.User.CreateUser
         {
-            Id = users.First().Id,
             BirthDate = DateTimeOffset.Now,
             Email = "notjustanyemail@test.com",
-            Password = "password",
             UserName = "name2",
-            Nickname = "name2",
+            Name = "name2",
         };
 
         // Act
@@ -246,9 +236,8 @@ public class UserRepositoryTests : TestBed<Startup>
         {
             BirthDate = DateTimeOffset.Now,
             Email = "notjustanyemail@test.com",
-            Password = "password",
             UserName = "name2",
-            Nickname = "name2",
+            Name = "name2",
         };
         var createdAt = new DateTimeOffset(2000, 1, 1, 1, 1, 1, TimeSpan.FromHours(2));
         _mockTimeProvider.Setup(s => s.GetUtcNow()).Returns(createdAt);
@@ -271,19 +260,17 @@ public class UserRepositoryTests : TestBed<Startup>
             {
                 BirthDate = DateTimeOffset.Now,
                 Email = "someemail@test.com",
-                Password = "password",
+                Name = "Test",
                 UserName = "name",
                 CreatedAt = DateTimeOffset.Now,
-                Nickname = "name",
             },
             new User()
             {
                 BirthDate = DateTimeOffset.Now,
                 Email = "notjustanyemail@test.com",
-                Password = "password",
+                Name = "name",
                 UserName = "name2",
                 CreatedAt = DateTimeOffset.Now,
-                Nickname = "name2",
             },
 
         ];
@@ -296,7 +283,7 @@ public class UserRepositoryTests : TestBed<Startup>
         {
             BirthDate = DateTimeOffset.Now,
             Email = "notjustanyemail@test.com",
-            Nickname = "name2",
+            Name = "name2",
         };
 
         var updatedAt = new DateTimeOffset(2000, 1, 1, 1, 1, 1, TimeSpan.FromHours(2));
@@ -320,14 +307,14 @@ public class UserRepositoryTests : TestBed<Startup>
         {
             BirthDate = DateTimeOffset.Now,
             Email = "notjustanyemail@test.com",
-            Nickname = "name2",
+            Name = "name2",
         };
 
         var updatedAt = new DateTimeOffset(2000, 1, 1, 1, 1, 1, TimeSpan.FromHours(2));
         _mockTimeProvider.Setup(s => s.GetUtcNow()).Returns(updatedAt);
 
         // Act
-        var result = await sut.UpdateUserAsync(Guid.NewGuid(), updateUser);
+        var result = await sut.UpdateUserAsync(5, updateUser);
 
         //Assert
         await Verify(result);
