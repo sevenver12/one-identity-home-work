@@ -171,6 +171,19 @@ public class UserRepositoryTests : TestBed<Startup>
         var result = await sut.DeleteUserAsync(users.First().Id);
 
         //Assert
+        var usersInDb = await _context.Users.ToListAsync();
+        await Verify(new { usersInDb, deletedUser = result });
+    }
+
+    [Fact]
+    public async Task DeleteUserAsync_NoUserInDb_ShouldReturnFalse()
+    {
+        // Arrange
+        var sut = CreateSut();
+        // Act
+        var result = await sut.DeleteUserAsync(Guid.NewGuid());
+
+        //Assert
         await Verify(result);
     }
 
