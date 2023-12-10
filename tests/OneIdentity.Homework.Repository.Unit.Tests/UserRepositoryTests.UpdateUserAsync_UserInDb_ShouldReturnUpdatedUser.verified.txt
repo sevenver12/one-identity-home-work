@@ -10,7 +10,11 @@
       Phone: null,
       CreatedAt: DateTimeOffset_2,
       UpdatedAt: UpdatedAt,
-      Company: null,
+      Company: {
+        Name: name,
+        CatchPhrase: cp,
+        Bs: bs
+      },
       Address: {
         Street: yes,
         Suite: no,
@@ -59,7 +63,11 @@
     Phone: null,
     CreatedAt: DateTimeOffset_2,
     UpdatedAt: UpdatedAt,
-    Company: null,
+    Company: {
+      Name: name,
+      CatchPhrase: cp,
+      Bs: bs
+    },
     Address: {
       Street: yes,
       Suite: no,
