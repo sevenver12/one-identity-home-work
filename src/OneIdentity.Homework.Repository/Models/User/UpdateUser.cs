@@ -29,10 +29,10 @@ public class UpdateUser
     /// <summary>
     /// Company of the user
     /// </summary>
-    public Company? Company { get; set; }
+    public required Company Company { get; set; }
 
     /// <summary>
     /// Address of the user
     /// </summary>
-    public Address? Address { get; set; }
+    public required Address Address { get; set; }
 }

@@ -255,6 +255,12 @@ public class UserRepositoryTests : TestBed<Startup>
                 Suite = "no",
                 ZipCode = "maybe"
             },
+            Company = new Models.User.Company
+            {
+                Bs = "bs",
+                CatchPhrase = "cp",
+                Name = "name"
+            }
         };
 
         var updatedAt = new DateTimeOffset(2000, 1, 1, 1, 1, 1, TimeSpan.FromHours(2));
@@ -279,6 +285,25 @@ public class UserRepositoryTests : TestBed<Startup>
             BirthDate = DateTimeOffset.Now,
             Email = "notjustanyemail@test.com",
             Name = "name2",
+            Address = new Models.User.Address()
+            {
+                City = "City",
+                Street = "strt",
+                Suite = "no",
+                ZipCode = "yes",
+                Geo = new Models.User.Geo
+                {
+                    Lat = 5,
+                    Lng = 5
+                }
+            },
+            Company = new Models.User.Company
+            {
+                Bs = "bs",
+                CatchPhrase = "cp",
+                Name = "name"
+            }
+
         };
 
         var updatedAt = new DateTimeOffset(2000, 1, 1, 1, 1, 1, TimeSpan.FromHours(2));

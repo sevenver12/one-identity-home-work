@@ -5,7 +5,7 @@ Accept: application/json
 
 ###
 
-GET {{OneIdentity.Homework.Api_HostAddress}}/users/1
+GET {{OneIdentity.Homework.Api_HostAddress}}/users/152f5133-000d-4a75-b67a-aa359decae39
 Accept: application/json
 
 ###
@@ -41,7 +41,7 @@ Content-Type: application/json
 
 ###
 
-PUT {{OneIdentity.Homework.Api_HostAddress}}/users/1
+PUT {{OneIdentity.Homework.Api_HostAddress}}/users/b03176b6-2e30-4a89-a9d5-5e1c694d5365
 Accept: text/plain
 Content-Type: application/json
 
@@ -49,13 +49,27 @@ Content-Type: application/json
   "Email" : "dumy@email.com",
   "BirthDate" : "2023-05-10",
   "PhoneNumber" : "+36 30 5555555",
-  "Nickname" : "nickname"
+  "Nickname" : "nickname",
+  "company": {
+    "name": "some company",
+    "catchPhrase": "we good",
+    "bs": "we not good"
+  },
+  "address": {
+    "street": "baker street",
+    "suite": "5",
+    "city": "London",
+    "zipCode": "1111",
+    "geo": {
+      "lat": -31.8129,
+      "lng": 62.5342
+    }
+  }
 }
 
 ###
 
-DELETE {{OneIdentity.Homework.Api_HostAddress}}/users/1
-Accept: application/json
+DELETE {{OneIdentity.Homework.Api_HostAddress}}/users/b03176b6-2e30-4a89-a9d5-5e1c694d5365
 
 ###
 

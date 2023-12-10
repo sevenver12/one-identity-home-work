@@ -8,16 +8,6 @@ public class User
         
     }
 
-    [SetsRequiredMembers]
-    public User(Guid id)
-    {
-        Id = id;
-        UserName = string.Empty;
-        Email = string.Empty;
-        Name = string.Empty;
-        
-    }
-
     /// <summary>
     /// Id of the user
     /// </summary>
@@ -66,11 +56,11 @@ public class User
     /// <summary>
     /// Company of the user
     /// </summary>
-    public Company? Company { get; set; }
+    public required Company Company { get; set; }
 
     /// <summary>
     /// Address of the user
     /// </summary>
-    public Address? Address { get; set; }
+    public required Address Address { get; set; }
 
 }
