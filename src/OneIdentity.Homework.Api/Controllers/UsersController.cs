@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using OneIdentity.Homework.Api.Parameters;
 using OneIdentity.Homework.Repository.Abstraction;
 using OneIdentity.Homework.Repository.Models.User;
 
@@ -18,9 +19,9 @@ public class UsersController : ControllerBase
 
     // GET: api/<Users>
     [HttpGet]
-    public async Task<ActionResult<User>> GetPaged([FromQuery(Name = "ps")] int pageSize, [FromQuery(Name = "pn")] int pageNumber)
+    public async Task<ActionResult<User>> GetPaged([FromQuery] PagedParameters pagedParams)
     {
-        return Ok(await _userRepository.GetPageOfUsersAsync(pageSize, pageNumber, HttpContext.RequestAborted));
+        return Ok(await _userRepository.GetPageOfUsersAsync(pagedParams.PageSize, pagedParams.PageNumber, HttpContext.RequestAborted));
     }
 
     // GET api/<Users>/5

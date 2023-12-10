@@ -20,7 +20,7 @@ Content-Type: application/json
   "Password" : "Password",
   "Email" : "dumy@email.com",
   "BirthDate" : "2023-05-10",
-  "PhoneNumber" : "+36 30 5555555",
+  "PhoneNumber" : "+36 30 6666666",
   "Nickname" : "nickname"
 }
 

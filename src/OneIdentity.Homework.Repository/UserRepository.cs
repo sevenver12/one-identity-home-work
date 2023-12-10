@@ -45,9 +45,19 @@ public class UserRepository : IUserRepository
     ///<inheritdoc/>
     public async Task<bool> DeleteUserAsync(Guid id, CancellationToken cancellationToken = default)
     {
-        var user = new Database.Entities.User(id);
-        _efContext.Entry(user).State = EntityState.Deleted;
-        return await _efContext.SaveChangesAsync() == 1;
+        var user = await _efContext.Users.FirstOrDefaultAsync(usr => usr.Id == id);
+
+        if (user == null)
+        {
+            return false;
+        }
+        _efContext.Users.Remove(user);
+        await _efContext.SaveChangesAsync();
+        //TODO: this should return 1 stating how many rows were affected,
+        //but the mongodb driver is just not working yet so a query is needed here temporarily and above
+        var deletedUser = await _efContext.Users.FirstOrDefaultAsync(usr => usr.Id == id);
+        return deletedUser == null;
+
     }
 
     ///<inheritdoc/>

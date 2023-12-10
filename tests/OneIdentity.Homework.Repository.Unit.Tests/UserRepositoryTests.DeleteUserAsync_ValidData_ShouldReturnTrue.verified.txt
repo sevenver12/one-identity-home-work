@@ -1,1 +1,16 @@
-﻿True
+﻿{
+  usersInDb: [
+    {
+      Id: Guid_1,
+      UserName: name2,
+      Password: password,
+      Email: notjustanyemail@test.com,
+      BirthDate: DateTimeOffset_1,
+      PhoneNumber: null,
+      Nickname: name2,
+      CreatedAt: DateTimeOffset_2,
+      UpdatedAt: null
+    }
+  ],
+  deletedUser: true
+}
