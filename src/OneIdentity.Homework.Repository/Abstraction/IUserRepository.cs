@@ -14,7 +14,8 @@ public interface IUserRepository
     /// <param name="user">User to be created</param>
     /// <param name="cancellationToken">CancellationToken</param>
     /// <returns>The created user</returns>
-    Task<User> CreateUser(CreateUser user, CancellationToken cancellationToken = default);
+    /// <remarks>Returns null when there was a duplicate Id provided</remarks>
+    Task<User?> CreateUserAsync(CreateUser user, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Deletes an user with the given id
@@ -48,5 +49,6 @@ public interface IUserRepository
     /// <param name="user">Update object</param>
     /// <param name="cancellationToken">CancellationToken</param>
     /// <returns>The updated user</returns>
+    /// <remarks>Returns null when user was not found</remarks>
     Task<User?> UpdateUserAsync(Guid id, UpdateUser user, CancellationToken cancellationToken = default);
 }

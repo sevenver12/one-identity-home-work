@@ -7,6 +7,7 @@ using OneIdentity.Homework.Repository.Extensions;
 using OneIdentity.Homework.Repository.Extensions.Mapper;
 using OneIdentity.Homework.Repository.Models;
 using OneIdentity.Homework.Repository.Models.User;
+using System.Diagnostics;
 namespace OneIdentity.Homework.Repository;
 
 /// <inheritdoc/>
@@ -50,11 +51,20 @@ public class UserRepository : IUserRepository
     }
 
     ///<inheritdoc/>
-    public async Task<User> CreateUser(CreateUser user, CancellationToken cancellationToken = default)
+    public async Task<User?> CreateUserAsync(CreateUser user, CancellationToken cancellationToken = default)
     {
-        var userTracker = _efContext.Users.Add(user.ToEntity(_timeProvider));
-        await _efContext.SaveChangesAsync(cancellationToken);
-        return userTracker.Entity.ToDto();
+        try
+        {
+            var userTracker = _efContext.Users.Add(user.ToEntity(_timeProvider));
+            await _efContext.SaveChangesAsync(cancellationToken);
+            return userTracker.Entity.ToDto();
+        }
+        catch (UniqueConstraintViolationException e)
+        {
+            _logger.LogInformation(e, "User {UserId} couldn't be created because an user exists with the same Id already", user.Id);
+            return null;
+        }
+        throw new UnreachableException();
     }
 
     ///<inheritdoc/>
@@ -64,7 +74,7 @@ public class UserRepository : IUserRepository
 
         if (userEntity is null)
         {
-            _logger.LogWarning("User {UserId} wasn't found while attempting update", id);
+            _logger.LogInformation("User {UserId} wasn't found while attempting update", id);
             return null;
         }
 

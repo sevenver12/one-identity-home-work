@@ -1,11 +1,11 @@
 ﻿{
   Id: Guid_1,
-  UserName: name,
+  UserName: name2,
   Password: password,
-  Email: someemail@test.com,
+  Email: notjustanyemail@test.com,
   BirthDate: DateTimeOffset_1,
   PhoneNumber: null,
-  Nickname: name,
-  CreatedAt: DateTimeOffset_2,
+  Nickname: name2,
+  CreatedAt: CreatedAt,
   UpdatedAt: null
 }

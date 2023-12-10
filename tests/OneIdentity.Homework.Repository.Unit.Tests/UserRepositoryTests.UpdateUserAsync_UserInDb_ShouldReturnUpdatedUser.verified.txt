@@ -1,15 +1,15 @@
 ﻿{
-  Items: [
+  usersInDb: [
     {
       Id: Guid_1,
       UserName: name,
       Password: password,
-      Email: someemail@test.com,
+      Email: notjustanyemail@test.com,
       BirthDate: DateTimeOffset_1,
       PhoneNumber: null,
-      Nickname: name,
+      Nickname: name2,
       CreatedAt: DateTimeOffset_2,
-      UpdatedAt: null
+      UpdatedAt: UpdatedAt
     },
     {
       Id: Guid_2,
@@ -23,6 +23,15 @@
       UpdatedAt: null
     }
   ],
-  CurrentPage: 0,
-  PageSize: 2
+  updateResult: {
+    Id: Guid_1,
+    UserName: name,
+    Password: password,
+    Email: notjustanyemail@test.com,
+    BirthDate: DateTimeOffset_1,
+    PhoneNumber: null,
+    Nickname: name2,
+    CreatedAt: DateTimeOffset_2,
+    UpdatedAt: UpdatedAt
+  }
 }

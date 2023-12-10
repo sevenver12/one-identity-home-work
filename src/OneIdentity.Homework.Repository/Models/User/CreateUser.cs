@@ -1,6 +1,12 @@
 ﻿namespace OneIdentity.Homework.Repository.Models.User;
 public class CreateUser
 {
+
+    /// <summary>
+    /// Id of the user
+    /// </summary>
+    public Guid Id { get; set; } = Guid.NewGuid();
+
     /// <summary>
     /// User name of the user
     /// </summary>

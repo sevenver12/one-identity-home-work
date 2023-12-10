@@ -32,6 +32,7 @@ public class UsersController : ControllerBase
         {
             return NotFound();
         }
+
         return Ok(user);
     }
 
@@ -39,8 +40,13 @@ public class UsersController : ControllerBase
     [HttpPost]
     public async Task<ActionResult<User>> Post([FromBody] CreateUser createUser)
     {
-        var user = await _userRepository.CreateUser(createUser, HttpContext.RequestAborted);
-        return CreatedAtAction(nameof(GetById),new { id = user.Id }, user);
+        var user = await _userRepository.CreateUserAsync(createUser, HttpContext.RequestAborted);
+        if (user is null)
+        {
+            return BadRequest("Duplicate Id");
+        }
+
+        return CreatedAtAction(nameof(GetById), new { id = user.Id }, user);
     }
 
     // PUT api/<Users>/5
@@ -65,6 +71,7 @@ public class UsersController : ControllerBase
         {
             return BadRequest();
         }
+
         return NoContent();
     }
 }
