@@ -9,6 +9,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution items", "Solution items", "{3386E604-B26B-40F8-A6C1-0209F42F6BBA}"
 	ProjectSection(SolutionItems) = preProject
 		.gitignore = .gitignore
+		.github\workflows\build.yml = .github\workflows\build.yml
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OneIdentity.Homework.Api", "src\OneIdentity.Homework.Api\OneIdentity.Homework.Api.csproj", "{CBFFD060-02B6-46F1-9DF5-71C71DD93CB5}"
@@ -21,7 +22,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OneIdentity.Homework.Reposi
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{59D9BCCC-31FB-4E73-A40B-84479D2FBD09}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OneIdentity.Homework.Repository.Unit.Tests", "tests\OneIdentity.Homework.Repository.Unit.Tests\OneIdentity.Homework.Repository.Unit.Tests.csproj", "{0597DE0B-FC99-4ECF-AE00-FC93CEE1B2DF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OneIdentity.Homework.Repository.Unit.Tests", "tests\OneIdentity.Homework.Repository.Unit.Tests\OneIdentity.Homework.Repository.Unit.Tests.csproj", "{0597DE0B-FC99-4ECF-AE00-FC93CEE1B2DF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
