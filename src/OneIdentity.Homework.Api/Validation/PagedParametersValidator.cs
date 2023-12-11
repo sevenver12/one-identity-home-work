@@ -3,9 +3,9 @@ using OneIdentity.Homework.Api.Parameters;
 
 namespace OneIdentity.Homework.Api.Validation;
 
-public partial class PagedParametersValidation : AbstractValidator<PagedParameters>
+public partial class PagedParametersValidator : AbstractValidator<PagedParameters>
 {
-    public PagedParametersValidation()
+    public PagedParametersValidator()
     {
         RuleFor(x => x.PageSize).LessThan(100);
     }

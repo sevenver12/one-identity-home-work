@@ -22,7 +22,7 @@ public static class ServiceProviderExtensions
         var selectorProvider = sp.GetRequiredService<IServiceEndPointSelectorProvider>();
         var resolverProvider = sp.GetRequiredService<ServiceEndPointResolverFactory>();
         var registry = new HttpServiceEndPointResolver(resolverProvider, selectorProvider, timeProvider);
-        var resolvedEndpoint = registry.GetEndpointAsync(new HttpRequestMessage(HttpMethod.Get, $"http://{Constants.DatabaseServiceName}"), default)
+        var resolvedEndpoint = registry.GetEndpointAsync(new HttpRequestMessage(HttpMethod.Get, $"https://{Constants.DatabaseServiceName}"), default)
             .GetAwaiter().GetResult();
         var resolvedConnectionString = connString.Replace(Constants.DatabaseServiceName, resolvedEndpoint.GetEndPointString());
         return resolvedConnectionString;

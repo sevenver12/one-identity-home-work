@@ -13,7 +13,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddControllers();
 builder.Services.AddRepository();
-builder.Services.AddValidatorsFromAssemblyContaining<PagedParametersValidation>();
+builder.Services.AddValidatorsFromAssemblyContaining<PagedParametersValidator>();
 
 builder.Services.AddFluentValidationAutoValidation();
 builder.AddServiceDefaults();
