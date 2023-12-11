@@ -10,6 +10,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution items", "Solution 
 	ProjectSection(SolutionItems) = preProject
 		.gitignore = .gitignore
 		.github\workflows\build.yml = .github\workflows\build.yml
+		README.md = README.md
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OneIdentity.Homework.Api", "src\OneIdentity.Homework.Api\OneIdentity.Homework.Api.csproj", "{CBFFD060-02B6-46F1-9DF5-71C71DD93CB5}"
