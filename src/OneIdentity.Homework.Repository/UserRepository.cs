@@ -7,7 +7,6 @@ using OneIdentity.Homework.Repository.Extensions;
 using OneIdentity.Homework.Repository.Extensions.Mapper;
 using OneIdentity.Homework.Repository.Models;
 using OneIdentity.Homework.Repository.Models.User;
-using System.Diagnostics;
 namespace OneIdentity.Homework.Repository;
 
 /// <inheritdoc/>
@@ -21,7 +20,7 @@ public class UserRepository : IUserRepository
     {
         _logger = logger ?? throw new ArgumentNullException(nameof(logger));
         _efContext = efContext ?? throw new ArgumentNullException(nameof(efContext));
-        _timeProvider = timeProvider;
+        _timeProvider = timeProvider ?? throw new ArgumentNullException(nameof(timeProvider));
     }
 
     ///<inheritdoc/>
@@ -35,6 +34,7 @@ public class UserRepository : IUserRepository
     public async Task<User?> GetUserByIdAsync(Guid id, CancellationToken cancellationToken = default)
     {
         var user = await _efContext.Users.FirstOrDefaultAsync(user => user.Id == id, cancellationToken);
+
         if (user is null)
         {
             return null;
@@ -45,17 +45,17 @@ public class UserRepository : IUserRepository
     ///<inheritdoc/>
     public async Task<bool> DeleteUserAsync(Guid id, CancellationToken cancellationToken = default)
     {
-        var user = await _efContext.Users.FirstOrDefaultAsync(usr => usr.Id == id);
+        var user = await _efContext.Users.FirstOrDefaultAsync(usr => usr.Id == id, cancellationToken);
 
         if (user == null)
         {
             return false;
         }
         _efContext.Users.Remove(user);
-        await _efContext.SaveChangesAsync();
+        await _efContext.SaveChangesAsync(cancellationToken);
         //TODO: this should return 1 stating how many rows were affected,
         //but the mongodb driver is just not working yet so a query is needed here temporarily and above
-        var deletedUser = await _efContext.Users.FirstOrDefaultAsync(usr => usr.Id == id);
+        var deletedUser = await _efContext.Users.FirstOrDefaultAsync(usr => usr.Id == id, cancellationToken);
         return deletedUser == null;
 
     }
@@ -71,7 +71,7 @@ public class UserRepository : IUserRepository
     ///<inheritdoc/>
     public async Task<User?> UpdateUserAsync(Guid id, UpdateUser user, CancellationToken cancellationToken = default)
     {
-        var userEntity = await _efContext.Users.FirstOrDefaultAsync(user => user.Id == id);
+        var userEntity = await _efContext.Users.FirstOrDefaultAsync(user => user.Id == id, cancellationToken);
 
         if (userEntity is null)
         {
