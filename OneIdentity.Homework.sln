@@ -24,6 +24,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{59D9BCCC
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OneIdentity.Homework.Repository.Unit.Tests", "tests\OneIdentity.Homework.Repository.Unit.Tests\OneIdentity.Homework.Repository.Unit.Tests.csproj", "{0597DE0B-FC99-4ECF-AE00-FC93CEE1B2DF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OneIdentity.Homework.Api.Integration.Tests", "tests\OneIdentity.Homework.Api.Integration.Tests\OneIdentity.Homework.Api.Integration.Tests.csproj", "{6D27791D-3CA3-496D-9914-8F515079F4B0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -54,6 +56,10 @@ Global
 		{0597DE0B-FC99-4ECF-AE00-FC93CEE1B2DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0597DE0B-FC99-4ECF-AE00-FC93CEE1B2DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0597DE0B-FC99-4ECF-AE00-FC93CEE1B2DF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6D27791D-3CA3-496D-9914-8F515079F4B0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6D27791D-3CA3-496D-9914-8F515079F4B0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6D27791D-3CA3-496D-9914-8F515079F4B0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6D27791D-3CA3-496D-9914-8F515079F4B0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -62,6 +68,7 @@ Global
 		{062EEE3A-6BC8-4988-B80B-309D1190E3A1} = {852EF575-5C97-4FCA-B8FF-8387F97D920D}
 		{99BFB8B2-4FE2-427C-9AE1-7A48357AB4C4} = {852EF575-5C97-4FCA-B8FF-8387F97D920D}
 		{0597DE0B-FC99-4ECF-AE00-FC93CEE1B2DF} = {59D9BCCC-31FB-4E73-A40B-84479D2FBD09}
+		{6D27791D-3CA3-496D-9914-8F515079F4B0} = {59D9BCCC-31FB-4E73-A40B-84479D2FBD09}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {0981B837-FD39-4A32-8CF0-06A6FFD856AE}

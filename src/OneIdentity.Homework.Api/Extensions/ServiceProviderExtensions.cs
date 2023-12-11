@@ -15,16 +15,16 @@ public static class ServiceProviderExtensions
     /// This method is sadly neccesary as the preview mongodb service provider (or simply the mongo driver) doesn't support EndpointResolution added with 
     /// <see cref="HostingExtensions.AddServiceDiscovery(IServiceCollection)"/>
     /// </remarks>
-    public static string ResolveMongoDbConnectionString(this IServiceProvider sp, WebApplicationBuilder builder)
+    public static string ResolveDbConnectionString(this IServiceProvider sp, WebApplicationBuilder builder)
     {
-        var connString = builder.Configuration.GetConnectionString("mongoDb")!;
+        var connString = builder.Configuration.GetConnectionString("database")!;
         var timeProvider = sp.GetService<TimeProvider>() ?? TimeProvider.System;
         var selectorProvider = sp.GetRequiredService<IServiceEndPointSelectorProvider>();
         var resolverProvider = sp.GetRequiredService<ServiceEndPointResolverFactory>();
         var registry = new HttpServiceEndPointResolver(resolverProvider, selectorProvider, timeProvider);
-        var resolvedEndpoint = registry.GetEndpointAsync(new HttpRequestMessage(HttpMethod.Get, $"http://{Constants.Mongo}"), default)
+        var resolvedEndpoint = registry.GetEndpointAsync(new HttpRequestMessage(HttpMethod.Get, $"https://{Constants.DatabaseServiceName}"), default)
             .GetAwaiter().GetResult();
-        var resolvedConnectionString = connString.Replace(Constants.Mongo, resolvedEndpoint.GetEndPointString());
+        var resolvedConnectionString = connString.Replace(Constants.DatabaseServiceName, resolvedEndpoint.GetEndPointString());
         return resolvedConnectionString;
     }
 }

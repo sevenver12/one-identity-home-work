@@ -8,26 +8,32 @@
     <IsPackable>false</IsPackable>
     <IsTestProject>true</IsTestProject>
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="appsettings.integration.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="appsettings.integration.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
   <PropertyGroup>
 	<!-- Exclude the project from analysis -->
 	<SonarQubeExclude>true</SonarQubeExclude>
   </PropertyGroup>
   <ItemGroup>
-    <None Remove="appsettings.unit.json" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="appsettings.unit.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-  </ItemGroup>
-  <ItemGroup>
-    <PackageReference Include="FluentAssertions" Version="7.0.0-alpha.3" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="8.0.0" />
+	<PackageReference Include="FluentAssertions" Version="7.0.0-alpha.3" />
+	<PackageReference Include="Meziantou.Xunit.ParallelTestFramework" Version="2.1.0" />
+	<PackageReference Include="Microsoft.AspNetCore.Mvc.Testing" Version="8.0.0" />
+	<PackageReference Include="Microsoft.Extensions.ServiceDiscovery" Version="8.0.0-preview.1.23557.2" />
+	<PackageReference Include="Moq" Version="4.20.70" />
+	<PackageReference Include="Testcontainers" Version="3.6.0" />
+	<PackageReference Include="Xunit.Microsoft.DependencyInjection" Version="8.0.3" />
+	<PackageReference Include="Verify.Xunit" Version="22.8.0" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.9.0-preview-23577-04" />
-    <PackageReference Include="Moq" Version="4.20.70" />
-    <PackageReference Include="Verify.Xunit" Version="22.8.0" />
     <PackageReference Include="xunit" Version="2.6.3" />
-    <PackageReference Include="Xunit.Microsoft.DependencyInjection" Version="8.0.3" />
     <PackageReference Include="xunit.runner.visualstudio" Version="2.5.5">
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
@@ -39,7 +45,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\src\OneIdentity.Homework.Repository\OneIdentity.Homework.Repository.csproj" />
+    <ProjectReference Include="..\..\src\OneIdentity.Homework.Api\OneIdentity.Homework.Api.csproj" />
   </ItemGroup>
 
 </Project>

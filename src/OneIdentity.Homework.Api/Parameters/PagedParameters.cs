@@ -1,6 +1,4 @@
-﻿using Microsoft.AspNetCore.Mvc;
-
-namespace OneIdentity.Homework.Api.Parameters;
+﻿namespace OneIdentity.Homework.Api.Parameters;
 
 public class PagedParameters
 {

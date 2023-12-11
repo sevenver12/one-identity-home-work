@@ -14,8 +14,7 @@ public interface IUserRepository
     /// <param name="user">User to be created</param>
     /// <param name="cancellationToken">CancellationToken</param>
     /// <returns>The created user</returns>
-    /// <remarks>Returns null when there was a duplicate Id provided</remarks>
-    Task<User?> CreateUserAsync(CreateUser user, CancellationToken cancellationToken = default);
+    Task<User> CreateUserAsync(CreateUser user, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Deletes an user with the given id

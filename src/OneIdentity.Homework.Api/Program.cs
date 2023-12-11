@@ -13,14 +13,13 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddControllers();
 builder.Services.AddRepository();
-builder.Services.AddValidatorsFromAssemblyContaining<PagedParametersValidation>();
+builder.Services.AddValidatorsFromAssemblyContaining<PagedParametersValidator>();
 
 builder.Services.AddFluentValidationAutoValidation();
 builder.AddServiceDefaults();
-
 builder.Services.AddDbContext<EfContext>((sp, opt) =>
 {
-    opt.UseMongoDB(sp.ResolveMongoDbConnectionString(builder), "mongo");
+    opt.UseMongoDB(sp.ResolveDbConnectionString(builder), "mongo");
 });
 
 builder.Services.ConfigureHttpJsonOptions(options =>
