@@ -1,0 +1,32 @@
+﻿{
+  items: [
+    {
+      id: Guid_1,
+      name: name,
+      userName: name,
+      email: someemail@test.com,
+      birthDate: DateTimeOffset_1,
+      website: www.something.com,
+      phone: 1234567890,
+      createdAt: DateTimeOffset_2,
+      updatedAt: null,
+      company: {
+        name: name,
+        catchPhrase: CatchPhrase,
+        bs: slogan
+      },
+      address: {
+        street: 2,
+        suite: 3,
+        city: 1,
+        zipCode: 4,
+        geo: {
+          lat: 1,
+          lng: 2
+        }
+      }
+    }
+  ],
+  currentPage: 0,
+  pageSize: 1
+}

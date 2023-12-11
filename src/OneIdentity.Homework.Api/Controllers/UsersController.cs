@@ -42,11 +42,6 @@ public class UsersController : ControllerBase
     public async Task<ActionResult<User>> Post([FromBody] CreateUser createUser)
     {
         var user = await _userRepository.CreateUserAsync(createUser, HttpContext.RequestAborted);
-        if (user is null)
-        {
-            return BadRequest("Duplicate Id");
-        }
-
         return CreatedAtAction(nameof(GetById), new { id = user.Id }, user);
     }
 
@@ -70,7 +65,7 @@ public class UsersController : ControllerBase
         var result = await _userRepository.DeleteUserAsync(id);
         if (!result)
         {
-            return BadRequest();
+            return NotFound();
         }
 
         return NoContent();

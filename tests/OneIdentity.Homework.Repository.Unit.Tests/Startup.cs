@@ -22,6 +22,6 @@ public class Startup : TestBedFixture
 
     protected override IEnumerable<TestAppSettings> GetTestAppSettings()
     {
-        yield return new() { Filename = "appsettings.json", IsOptional = true };
+        yield return new() { Filename = "appsettings.unit.json", IsOptional = true };
     }
 }

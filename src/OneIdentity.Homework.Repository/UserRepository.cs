@@ -61,7 +61,7 @@ public class UserRepository : IUserRepository
     }
 
     ///<inheritdoc/>
-    public async Task<User?> CreateUserAsync(CreateUser user, CancellationToken cancellationToken = default)
+    public async Task<User> CreateUserAsync(CreateUser user, CancellationToken cancellationToken = default)
     {
         var userTracker = _efContext.Users.Add(user.ToEntity(_timeProvider));
         await _efContext.SaveChangesAsync(cancellationToken);

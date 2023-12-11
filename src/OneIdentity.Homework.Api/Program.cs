@@ -17,10 +17,9 @@ builder.Services.AddValidatorsFromAssemblyContaining<PagedParametersValidation>(
 
 builder.Services.AddFluentValidationAutoValidation();
 builder.AddServiceDefaults();
-
 builder.Services.AddDbContext<EfContext>((sp, opt) =>
 {
-    opt.UseMongoDB(sp.ResolveMongoDbConnectionString(builder), "mongo");
+    opt.UseMongoDB(sp.ResolveDbConnectionString(builder), "mongo");
 });
 
 builder.Services.ConfigureHttpJsonOptions(options =>

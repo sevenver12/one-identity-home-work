@@ -1,0 +1,26 @@
+﻿{
+  id: Guid_1,
+  name: name2,
+  userName: name2,
+  email: notjustanyemail@test.com,
+  birthDate: DateTimeOffset_1,
+  website: 5.com,
+  phone: 5,
+  createdAt: DateTimeOffset_2,
+  updatedAt: null,
+  company: {
+    name: Long Homework,
+    catchPhrase: cpt,
+    bs: bs
+  },
+  address: {
+    street: yes,
+    suite: no,
+    city: Coty,
+    zipCode: maybe,
+    geo: {
+      lat: 1,
+      lng: 2
+    }
+  }
+}
