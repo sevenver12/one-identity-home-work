@@ -87,7 +87,7 @@ public class UserRepositoryTests : TestBed<Startup>
         // Arrange
 
         // Act
-        var act = () => new UserRepository(null, _context, _mockTimeProvider.Object);
+        var act = () => new UserRepository(null!, _context, _mockTimeProvider.Object);
 
         // Assert
         act.Should().Throw<ArgumentNullException>().WithParameterName("logger");
@@ -99,7 +99,7 @@ public class UserRepositoryTests : TestBed<Startup>
         // Arrange
 
         // Act
-        var act = () => new UserRepository(_logger, null, _mockTimeProvider.Object);
+        var act = () => new UserRepository(_logger, null!, _mockTimeProvider.Object);
 
         // Assert
         act.Should().Throw<ArgumentNullException>().WithParameterName("efContext");
@@ -111,7 +111,7 @@ public class UserRepositoryTests : TestBed<Startup>
         // Arrange
 
         // Act
-        var act = () => new UserRepository(_logger, _context, null);
+        var act = () => new UserRepository(_logger, _context, null!);
 
         // Assert
         act.Should().Throw<ArgumentNullException>().WithParameterName("timeProvider");

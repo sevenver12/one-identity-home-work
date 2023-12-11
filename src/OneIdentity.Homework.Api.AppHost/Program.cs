@@ -1,13 +1,21 @@
+using Microsoft.Extensions.Configuration;
 using OneIdentity.Homework.ServiceDefaults;
 
 var builder = DistributedApplication.CreateBuilder(args);
 
-var mongo = builder.AddContainer(Constants.Mongo, builder.Configuration["Containers:Mongo:Image"]!, builder.Configuration["Containers:Mongo:Tag"]!)
-    .WithServiceBinding(containerPort: 27017, hostPort: 27017, scheme: "http", name: Constants.MongoEndpoint)
-    .WithEnvironment("MONGO_INITDB_ROOT_USERNAME", builder.Configuration["Containers:Mongo:Env:RootUser"]!)
-    .WithEnvironment("MONGO_INITDB_ROOT_PASSWORD", builder.Configuration["Containers:Mongo:Env:RootPassword"]);
+var database = builder.AddContainer(Constants.DatabaseServiceName,
+                builder.Configuration[Constants.DatabaseImagePath]!,
+                builder.Configuration[Constants.DatabaseTagPath]!)
+    .WithServiceBinding(containerPort: builder.Configuration.GetValue<int>(Constants.DatabaseContainerPortPath),
+                        hostPort: builder.Configuration.GetValue<int>(Constants.DatabaseHostPortPath),
+                        scheme: "http",
+                        name: Constants.DatabaseEndpoint);
+foreach (var env in builder.Configuration.GetSection(Constants.DatabaseEnvsPath).GetChildren())
+{
+    database.WithEnvironment(env.Key, env.Value);
+}
 
 builder.AddProject<Projects.OneIdentity_Homework_Api>(Constants.Api)
-    .WithReference(mongo.GetEndpoint(Constants.MongoEndpoint));
+    .WithReference(database.GetEndpoint(Constants.DatabaseEndpoint));
 
 builder.Build().Run();
