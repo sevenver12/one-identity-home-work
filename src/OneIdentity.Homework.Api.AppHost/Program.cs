@@ -8,7 +8,7 @@ var database = builder.AddContainer(Constants.DatabaseServiceName,
                 builder.Configuration[Constants.DatabaseTagPath]!)
     .WithServiceBinding(containerPort: builder.Configuration.GetValue<int>(Constants.DatabaseContainerPortPath),
                         hostPort: builder.Configuration.GetValue<int>(Constants.DatabaseHostPortPath),
-                        scheme: "http",
+                        scheme: "https",
                         name: Constants.DatabaseEndpoint);
 foreach (var env in builder.Configuration.GetSection(Constants.DatabaseEnvsPath).GetChildren())
 {
