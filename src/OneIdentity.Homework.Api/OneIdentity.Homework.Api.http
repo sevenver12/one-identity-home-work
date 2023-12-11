@@ -1,11 +1,11 @@
 @OneIdentity.Homework.Api_HostAddress = http://localhost:5200/api
 
-GET {{OneIdentity.Homework.Api_HostAddress}}/users?ps=10&pn=0
+GET {{OneIdentity.Homework.Api_HostAddress}}/users?PageSize=10&PageNumber=0
 Accept: application/json
 
 ###
 
-GET {{OneIdentity.Homework.Api_HostAddress}}/users/152f5133-000d-4a75-b67a-aa359decae39
+GET {{OneIdentity.Homework.Api_HostAddress}}/users/a9c01571-bba4-4239-990c-b15bdec1d5d7
 Accept: application/json
 
 ###
@@ -41,7 +41,7 @@ Content-Type: application/json
 
 ###
 
-PUT {{OneIdentity.Homework.Api_HostAddress}}/users/b03176b6-2e30-4a89-a9d5-5e1c694d5365
+PUT {{OneIdentity.Homework.Api_HostAddress}}/users/a9c01571-bba4-4239-990c-b15bdec1d5d7
 Accept: text/plain
 Content-Type: application/json
 
@@ -69,7 +69,7 @@ Content-Type: application/json
 
 ###
 
-DELETE {{OneIdentity.Homework.Api_HostAddress}}/users/b03176b6-2e30-4a89-a9d5-5e1c694d5365
+DELETE {{OneIdentity.Homework.Api_HostAddress}}/users/a9c01571-bba4-4239-990c-b15bdec1d5d7
 
 ###
 
