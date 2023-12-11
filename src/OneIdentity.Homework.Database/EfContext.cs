@@ -14,7 +14,7 @@ public class EfContext : DbContext
     {
         modelBuilder.Entity<User>(u =>
         {
-            u.OwnsOne(x => x.Address,c=>c.OwnsOne(address=>address.Geo));
+            u.OwnsOne(x => x.Address, c => c.OwnsOne(address => address.Geo));
             u.OwnsOne(x => x.Company).ToJson();
         });
 

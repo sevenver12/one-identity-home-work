@@ -20,7 +20,7 @@ public class UserRepository : IUserRepository
     {
         _logger = logger ?? throw new ArgumentNullException(nameof(logger));
         _efContext = efContext ?? throw new ArgumentNullException(nameof(efContext));
-        _timeProvider = timeProvider;
+        _timeProvider = timeProvider ?? throw new ArgumentNullException(nameof(timeProvider));
     }
 
     ///<inheritdoc/>

@@ -1,3 +1,4 @@
+using FluentAssertions;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using Moq;
@@ -80,6 +81,42 @@ public class UserRepositoryTests : TestBed<Startup>
         _context = _fixture.GetService<EfContext>(_testOutputHelper)!;
     }
 
+    [Fact]
+    public void Constructor_NullLogger_ShouldThrow()
+    {
+        // Arrange
+
+        // Act
+        var act = () => new UserRepository(null, _context, _mockTimeProvider.Object);
+
+        // Assert
+        act.Should().Throw<ArgumentNullException>().WithParameterName("logger");
+    }
+
+    [Fact]
+    public void Constructor_NullContext_ShouldThrow()
+    {
+        // Arrange
+
+        // Act
+        var act = () => new UserRepository(_logger, null, _mockTimeProvider.Object);
+
+        // Assert
+        act.Should().Throw<ArgumentNullException>().WithParameterName("efContext");
+    }
+
+    [Fact]
+    public void Constructor_NullTimeProvider_ShouldThrow()
+    {
+        // Arrange
+
+        // Act
+        var act = () => new UserRepository(_logger, _context, null);
+
+        // Assert
+        act.Should().Throw<ArgumentNullException>().WithParameterName("timeProvider");
+    }
+
     public UserRepository CreateSut()
     {
         return new UserRepository(_logger, _context, _mockTimeProvider.Object);
@@ -91,6 +128,27 @@ public class UserRepositoryTests : TestBed<Startup>
         // Arrange
         var sut = CreateSut();
         var pageSize = 2;
+        var pageNumber = 0;
+        List<User> users = GetTestUsers();
+
+        _context.Users.AddRange(users);
+        await _context.SaveChangesAsync();
+        _context.ChangeTracker.Clear();
+
+        // Act
+        var result = await sut.GetPageOfUsersAsync(pageSize, pageNumber);
+
+        //Assert
+        await Verify(result);
+
+    }
+
+    [Fact]
+    public async Task GetPageOfUsersAsync_ValidDataWith0PageSize_ShouldReturnWithUsers()
+    {
+        // Arrange
+        var sut = CreateSut();
+        var pageSize = 0;
         var pageNumber = 0;
         List<User> users = GetTestUsers();
 

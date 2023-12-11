@@ -1,0 +1,58 @@
+﻿{
+  Items: [
+    {
+      Id: Guid_1,
+      Name: name,
+      UserName: name,
+      Email: someemail@test.com,
+      BirthDate: DateTimeOffset_1,
+      Website: www.something.com,
+      Phone: 1234567890,
+      CreatedAt: DateTimeOffset_2,
+      UpdatedAt: null,
+      Company: {
+        Name: name,
+        CatchPhrase: CatchPhrase,
+        Bs: slogan
+      },
+      Address: {
+        Street: 2,
+        Suite: 3,
+        City: 1,
+        ZipCode: 4,
+        Geo: {
+          Lat: 1.0,
+          Lng: 2.0
+        }
+      }
+    },
+    {
+      Id: Guid_2,
+      Name: name,
+      UserName: name2,
+      Email: notjustanyemail@test.com,
+      BirthDate: DateTimeOffset_3,
+      Website: www.something.com,
+      Phone: 1234567890,
+      CreatedAt: DateTimeOffset_4,
+      UpdatedAt: null,
+      Company: {
+        Name: name,
+        CatchPhrase: CatchPhrase,
+        Bs: slogan
+      },
+      Address: {
+        Street: 2,
+        Suite: 3,
+        City: 1,
+        ZipCode: 4,
+        Geo: {
+          Lat: 1.0,
+          Lng: 2.0
+        }
+      }
+    }
+  ],
+  CurrentPage: 0,
+  PageSize: 2
+}
