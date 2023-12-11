@@ -20,6 +20,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
+    # for sonar
+    - name: Set up JDK 17
+      uses: actions/setup-java@v4
+      with:
+        java-version: 17
+        distribution: microsoft
     - name: Setup .NET
       uses: actions/setup-dotnet@v3
       with:
@@ -27,17 +33,17 @@ jobs:
     - name: Setup Aspire
       run: dotnet workload install aspire
     - name: Restore dependencies
-      run: dotnet restore
+      run: | 
+          dotnet restore
+          dotnet tool restore
+    - name: SonarCloud Begin
+      run: dotnet sonarscanner begin /o:sevenver /k:sevenver12_one-identity-home-work /d:sonar.login=${{ secrets.SONAR_TOKEN }} /s:$GITHUB_WORKSPACE/.config/SonarQube.Analysis.xml
     - name: Build
       run: dotnet build --no-restore
     - name: Test
       run: dotnet test --collect:"XPlat Code Coverage;Format=opencover" --no-build --verbosity normal --logger "trx;LogFileName=test-results.trx" || true
-    - name: SonarCloud Scan
-      uses: SonarSource/sonarcloud-github-action@master
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-
+    - name: SonarCloud End
+      run: dotnet sonarscanner end /d:sonar.login="${{ secrets.SONAR_TOKEN }}"
     - name: Report
       uses: dorny/test-reporter@v1
       if: always()

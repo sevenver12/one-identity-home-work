@@ -12,6 +12,10 @@
     <PackageReference Include="Aspire.Hosting" Version="8.0.0-preview.1.23557.2" />
   </ItemGroup>
 
+  <PropertyGroup>
+	  <!-- Exclude the project from analysis -->
+	  <SonarQubeExclude>true</SonarQubeExclude>
+  </PropertyGroup>
   <ItemGroup>
     <ProjectReference Include="..\OneIdentity.Homework.Api.ServiceDefaults\OneIdentity.Homework.ServiceDefaults.csproj" />
     <ProjectReference Include="..\OneIdentity.Homework.Api\OneIdentity.Homework.Api.csproj" />

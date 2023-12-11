@@ -7,7 +7,11 @@
     <Nullable>enable</Nullable>
     <IsAspireSharedProject>true</IsAspireSharedProject>
   </PropertyGroup>
-
+	
+  <PropertyGroup>
+    <!-- Exclude the project from analysis -->
+	<SonarQubeExclude>true</SonarQubeExclude>
+  </PropertyGroup>
   <ItemGroup>
     <FrameworkReference Include="Microsoft.AspNetCore.App" />
 
